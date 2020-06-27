@@ -13,12 +13,6 @@
 #### a) Isso indica maior fluxo de alunos?
 
 
-### 04 - Existem disciplinas que não obedecem a resolução dos horários 004/2007 do CONSEPE? [Resolução](https://documentos.ufersa.edu.br/wp-content/uploads/sites/79/arquivos/consepe/2007/RESOLUCAO_004_CONSEPE_2007_Normas_Regul_Horarios.pdf)
+### 04 - Existem disciplinas que não obedecem a [resolução dos horários 004/2007 do CONSEPE](https://documentos.ufersa.edu.br/wp-content/uploads/sites/79/arquivos/consepe/2007/RESOLUCAO_004_CONSEPE_2007_Normas_Regul_Horarios.pdf)?
 
 #### a) - Se a resposta para a pergunta anterior for verdadeira, quem são os professores dessas disciplinas?
-
-
-### 05 - Quais os dias em que há mais professores no(s) campus da UFERSA?
-
-
-### 06 - Quais os professores que possuem mais disciplinas com maior intervalo de dias entre os horários?

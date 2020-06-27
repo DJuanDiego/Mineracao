@@ -2,27 +2,18 @@
 #
 # Criado por Juan Diego em 27/06/2020
 #
-# Retorna os horários com mais disciplinas ofertadas pela UFERSA no período entre 2009-2019.
+# Retorna as disciplinas que não obedecem a resolução dos horários estabelecidos pelo CONSEPE em 2007.
 
-# Existem várias disciplinas sem horários. Algumas EAD, outras não.
+# Vezes em que foram cadastradas disciplinas que não seguem a convenção de horários.
+sed 's/","/"\t"/g' < src/Horarios.csv | 
+    egrep '7(M|T|N)|1(M|T|N)' |    
+    sort > output/Q4.csv
 
-# Disciplinas EAD.
-sed 's/","/"\t"/g' < src/Horarios.csv |
-    grep EAD |
-    grep '"-"' > output/Q3_EAD.csv
-
-# Disciplinas Não EAD sem horários.
-sed 's/","/"\t"/g' < src/Horarios.csv |
-    grep -v EAD |
-    grep '"-"' > output/Q3_Nao_EAD.csv
-
-# Horários mais utilizados
-sed 's/","/\t/g' < src/Horarios.csv | 
-    egrep -v '\t-\t' | 
-    cut -f 7 |  
-    grep [A-Z] | 
-    sed 's/(.*)$//g' | 
+# As disciplinas que mais desrespeitaram a convenção
+cut -f 5,7 < output/Q4.csv | 
     sort | 
     uniq -c | 
-    sort --numeric-sort | 
-    sed 's/^[^0-9]*//g' > output/Q3_Hor_Disc.csv
+    sort --numeric-sort
+
+# Os professores dessas disciplinas
+
