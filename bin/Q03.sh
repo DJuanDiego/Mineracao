@@ -8,7 +8,8 @@
 # Disciplinas EAD.
 sed 's/","/"\t"/g' < src/Horarios.csv |
     grep EAD |
-    grep '"-"' > output/Q3_EAD.csv
+    grep '"-"' | 
+    tr \\t , > output/Q3_EAD.csv
 
 # Número de vezes que cada Disciplina EAD foi ofertada
 sort < output/Q3_EAD.csv | 
@@ -20,8 +21,9 @@ sort < output/Q3_EAD.csv |
 
 # Disciplinas Não EAD sem horários.
 sed 's/","/"\t"/g' < src/Horarios.csv |
-    grep -v EAD |
-    grep '"-"' > output/Q3_Nao_EAD.csv
+    egrep -v '"EAD[0-9]{2,}"' |
+    grep '"-"' | 
+    tr \\t , > output/Q3_Nao_EAD.csv
 
 # Número de vezes que cada Disciplina Não EAD e sem horário foi ofertada.
 sort < output/Q3_Nao_EAD.csv | 
@@ -30,6 +32,10 @@ sort < output/Q3_Nao_EAD.csv |
     uniq -c | 
     sort --numeric-sort
 
+# Disciplinas com Horário
+sed 's/","/"\t"/g' < src/Horarios.csv |
+    egrep -v '"EAD[0-9]{2,}"|"-"' | 
+    tr \\t ',' > output/Q3_Disc_C_Hor.csv
 
 # Horários mais utilizados
 sed 's/","/\t/g' < src/Horarios.csv | 
@@ -39,5 +45,6 @@ sed 's/","/\t/g' < src/Horarios.csv |
     sed 's/(.*)$//g' | 
     sort | 
     uniq -c | 
-    sort --numeric-sort | 
-    sed 's/^[^0-9]*//g' > output/Q3_Hor_Disc.csv
+    sort -r --numeric-sort | 
+    sed 's/^[^0-9]*//g' | 
+    sed 's/ /,/' > output/Q3_Hor_Disc.csv
