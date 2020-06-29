@@ -11,4 +11,4 @@ sed 's/","/"\t"/g' < src/Horarios.csv |
     uniq -c | 
     sed 's/^[^0-9]*//g' | 
     sort -r --numeric-sort | 
-    tr ' ' ',' > output/Q2.csv
+    sed 's/ /,/'  > output/Q2.csv
