@@ -9,4 +9,6 @@ sed 's/","/"\t"/g' < src/Horarios.csv |
     cut -f 5 | 
     sort | 
     uniq -c | 
-    sort --numeric-sort > output/Q2.csv
+    sed 's/^[^0-9]*//g' | 
+    sort -r --numeric-sort | 
+    tr ' ' ',' > output/Q2.csv
